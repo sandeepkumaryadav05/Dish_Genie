@@ -17,7 +17,8 @@ It combines **React, Node.js, Express, MongoDB, Firebase Authentication, and Goo
 Users can search for recipes using ingredients and quickly filter recipes based on nutritional and dietary preferences such as **High Protein, Low Calorie, Vegetarian, Quick Meals, and Healthy**.
 
 <p align="center">
-  <img src="./screenshots/discover.png" alt="DishGenie Discover Page" width="900">
+  <img width="1889" height="865" alt="image" src="https://github.com/user-attachments/assets/65eaba09-56d7-4851-89b8-2f8078287032" />
+  
 </p>
 
 ---
@@ -27,7 +28,8 @@ Users can search for recipes using ingredients and quickly filter recipes based 
 Users can save recipes to their personal favorites and easily access them later.
 
 <p align="center">
-  <img src="./screenshots/favorites.png" alt="DishGenie Favorites Page" width="900">
+  <img width="1838" height="778" alt="image" src="https://github.com/user-attachments/assets/181bc36f-625f-461a-8452-1c3b98bcce80" />
+
 </p>
 
 ---
@@ -37,7 +39,8 @@ Users can save recipes to their personal favorites and easily access them later.
 Administrators can manage the recipe database through a dedicated dashboard with recipe statistics and management controls.
 
 <p align="center">
-  <img src="./screenshots/admin-dashboard.png" alt="DishGenie Admin Dashboard" width="900">
+ <img width="1786" height="750" alt="image" src="https://github.com/user-attachments/assets/23fbaf1f-caeb-455d-a466-d9608b51839f" />
+
 </p>
 
 ---
@@ -47,7 +50,8 @@ Administrators can manage the recipe database through a dedicated dashboard with
 The AI Recipe Assistant provides personalized recipe suggestions, cooking ideas, ingredient recommendations, and meal suggestions based on the user's preferences and available recipes.
 
 <p align="center">
-  <img src="./screenshots/ai-recipe-assistant.png" alt="DishGenie AI Recipe Assistant" width="900">
+  <img width="1274" height="701" alt="image" src="https://github.com/user-attachments/assets/b116df61-398c-4069-9924-d2ae6956d4e9" />
+
 </p>
 
 ---
