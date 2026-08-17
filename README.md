@@ -6,9 +6,12 @@ DishGenie helps users discover recipes based on the ingredients they have, nutri
 
 It combines **React, Node.js, Express, MongoDB, Firebase Authentication, and Google Gemini AI** to provide a personalized recipe discovery experience.
 
-**GitHub Repository:** [sandeepkumaryadav05/Dish_Genie](https://github.com/sandeepkumaryadav05/Dish_Genie)
+## 🔗 Project Links
 
-**Live Link:** https://dish-genie-seven.vercel.app
+| Resource | Link |
+|---|---|
+| 📂 GitHub Repository | [DishGenie](https://github.com/sandeepkumaryadav05/Dish_Genie) |
+| 🚀 Live Demo | [DishGenie Live](https://dish-genie-seven.vercel.app) |
 ---
 
 ## 📸 Application Preview
