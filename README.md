@@ -8,6 +8,7 @@ It combines **React, Node.js, Express, MongoDB, Firebase Authentication, and Goo
 
 **GitHub Repository:** [sandeepkumaryadav05/Dish_Genie](https://github.com/sandeepkumaryadav05/Dish_Genie)
 
+**Live Link:** https://dish-genie-seven.vercel.app
 ---
 
 ## 📸 Application Preview
