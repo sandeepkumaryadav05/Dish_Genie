@@ -25,6 +25,8 @@ if (isProduction) {
 }
 
 // --- CORS ---
+// Auth is carried exclusively in the Authorization header (Firebase ID token),
+// never in cookies — so credentialed CORS stays disabled.
 const allowOrigins = (process.env.ALLOW_ORIGINS || '')
   .split(',')
   .map(s => s.trim())
@@ -32,7 +34,7 @@ const allowOrigins = (process.env.ALLOW_ORIGINS || '')
 
 app.use(cors({
   origin: allowOrigins.length ? allowOrigins : false,
-  credentials: true,
+  credentials: false,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));

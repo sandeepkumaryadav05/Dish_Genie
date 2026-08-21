@@ -21,15 +21,15 @@
 //   - MONGO_URL in .env
 //   - SEED_KEY in .env (safety guard)
 //
-// The admin account (sandeepadmin@gmail.com) is always set to role: "admin".
-// This script is idempotent — safe to run multiple times.
+// NOTE: This script NEVER assigns roles. Admin promotion is handled
+// exclusively by scripts/setAdminRole.js so that authorization is always
+// derived from the persisted MongoDB role of a verified Firebase UID —
+// never from an email address.
 
 require('dotenv').config();
 
 const connectDB = require('../src/db/connectDB');
 const User = require('../src/model/User.model.js');
-
-const ADMIN_EMAIL = 'sandeepadmin@gmail.com';
 
 function printCredentialHelp() {
   console.error('');
@@ -115,9 +115,6 @@ function printCredentialHelp() {
         continue;
       }
 
-      const isAdmin = fbEmail.toLowerCase() === ADMIN_EMAIL.toLowerCase();
-      const expectedRole = isAdmin ? 'admin' : 'user';
-
       const now = new Date();
       const mongoUser = await User.findOneAndUpdate(
         { firebaseUid: fbUid },
@@ -129,7 +126,7 @@ function printCredentialHelp() {
           $setOnInsert: {
             firebaseUid: fbUid,
             name: fbName,
-            role: expectedRole,
+            role: 'user',
             createdAt: now
           }
         },
@@ -144,16 +141,11 @@ function printCredentialHelp() {
         await mongoUser.save();
       }
 
-      if (isAdmin && mongoUser.role !== 'admin') {
-        mongoUser.role = 'admin';
-        await mongoUser.save();
-      }
-
       const timeDiff = Math.abs(mongoUser.updatedAt.getTime() - now.getTime());
       const isNew = timeDiff < 1000;
 
       if (isNew) {
-        console.log(`   ✅ Created: ${fbEmail} (firebaseUid: ${fbUid}, role: ${expectedRole})`);
+        console.log(`   ✅ Created: ${fbEmail} (firebaseUid: ${fbUid}, role: user)`);
         created++;
       } else {
         console.log(`   🔄 Exists:  ${fbEmail} (firebaseUid: ${fbUid})`);
@@ -169,13 +161,6 @@ function printCredentialHelp() {
 
     const mongoCount = await User.countDocuments();
     console.log(`\n   MongoDB users now:  ${mongoCount}`);
-
-    const adminCheck = await User.findOne({ email: ADMIN_EMAIL });
-    console.log(`   Admin verified:     ${adminCheck ? 'YES' : 'NO'}`);
-    if (adminCheck) {
-      console.log(`   Admin role:         ${adminCheck.role}`);
-      console.log(`   Admin firebaseUid:  ${adminCheck.firebaseUid}`);
-    }
 
     console.log('\n✅ Sync complete!');
     process.exit(0);

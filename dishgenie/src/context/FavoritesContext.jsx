@@ -7,19 +7,6 @@ import {
 import { useAuth } from "./authContext.js";
 import { FavoritesContext } from "./favoritesContext.js";
 
-const LEGACY_FAV_KEY = "favorites_v2";
-const MIGRATION_KEY = "favorites_migrated_v3";
-
-const readLegacyFavorites = () => {
-  try {
-    return JSON.parse(localStorage.getItem(LEGACY_FAV_KEY) || "[]")
-      .map((r) => r && r._id)
-      .filter(Boolean);
-  } catch {
-    return [];
-  }
-};
-
 export default function FavoritesProvider({ children }) {
   const { user } = useAuth();
   const [favorites, setFavorites] = useState([]);
@@ -48,33 +35,6 @@ export default function FavoritesProvider({ children }) {
     }
     reload();
   }, [user, reload]);
-
-  useEffect(() => {
-    if (!user) return;
-    const key = `${MIGRATION_KEY}_${user.uid}`;
-    if (localStorage.getItem(key)) return;
-
-    const legacyIds = readLegacyFavorites();
-    if (!legacyIds.length) {
-      localStorage.setItem(key, "1");
-      return;
-    }
-
-    (async () => {
-      const existing = new Set(favoriteIds.map(String));
-      for (const id of legacyIds) {
-        if (existing.has(String(id))) continue;
-        try {
-          await addFavorite(id);
-        } catch {
-          /* stale or deleted recipe — skip silently */
-        }
-      }
-      localStorage.setItem(key, "1");
-      await reload();
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
 
   const isFavorite = useCallback(
     (recipeId) => favoriteIds.includes(recipeId),
