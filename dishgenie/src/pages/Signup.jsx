@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/authContext.js";
+import dishgenieLogo from "../assets/dishgenie-logo.svg";
 
 export default function Signup() {
   const [name, setName] = useState("");
@@ -63,7 +64,7 @@ export default function Signup() {
   return (
     <div className="auth-container">
       <div className="auth-header">
-        <span className="auth-icon">🍳</span>
+        <img src={dishgenieLogo} alt="DishGenie" className="auth-icon" />
         <h2>Create Account</h2>
         <p className="auth-subtitle">
           Join DishGenie and discover amazing recipes

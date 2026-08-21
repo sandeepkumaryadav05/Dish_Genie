@@ -4,6 +4,7 @@ import "../App.css";
 import { useAuth } from "../context/authContext.js";
 import { useAdmin } from "../context/adminContext.js";
 import { useTheme } from "../context/themeContext.js";
+import dishgenieLogo from "../assets/dishgenie-logo.svg";
 
 export default function Header() {
   const { user, logout } = useAuth();
@@ -71,7 +72,7 @@ export default function Header() {
       <header className={`header${scrolled ? " scrolled" : ""}`}>
         <div className="header-inner">
           <Link to="/" className="brand">
-            <span className="brand-icon">🍳</span>
+            <img src={dishgenieLogo} alt="DishGenie" className="brand-icon" />
             <span className="brand-name">DishGenie</span>
           </Link>
 

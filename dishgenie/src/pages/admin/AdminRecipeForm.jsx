@@ -250,7 +250,7 @@ export default function AdminRecipeForm() {
       <form className="admin-form" onSubmit={handleSubmit}>
         {/* Basic info */}
         <div className="admin-form-section">
-          <h3>🍳 Basic Info</h3>
+          <h3>Basic Info</h3>
 
           <label className="pref-label">Recipe name *</label>
           <input

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/authContext.js";
+import dishgenieLogo from "../assets/dishgenie-logo.svg";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -36,7 +37,7 @@ export default function Login() {
   return (
     <div className="auth-container">
       <div className="auth-header">
-        <span className="auth-icon">🍳</span>
+        <img src={dishgenieLogo} alt="DishGenie" className="auth-icon" />
         <h2>Welcome Back</h2>
         <p className="auth-subtitle">
           Log in to your DishGenie account
